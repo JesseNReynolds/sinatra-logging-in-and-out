@@ -6,7 +6,13 @@
     <link rel="stylesheet" href="stylesheets/bootstrap.css" type="text/css">  
   </head>
   <body id="page-top">
-    
+  <% if Helpers.is_logged_in?(session) == true %>
+    <h1>Welcome <%= User.find_by_id(session[:user_id])[:username] %></h1>
+    <h3>Your Balance: <%= User.find_by_id(session[:user_id])[:balance] %></h3>
 
+    <a href="/logout">Log Out</a>
+    <% else %>
+    <% end %>
+    
   </body>
 </html>
